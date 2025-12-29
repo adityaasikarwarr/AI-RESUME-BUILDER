@@ -116,7 +116,7 @@ const Testimonial = () => {
   return (
     <div
       id="testimonial"
-      className="flex flex-col items-center my-10 scroll-mt-10 px-10 py-16"
+      className="flex flex-col items-center my-10 scroll-mt-10 px-10 py-16 "
     >
       <h2 className="text-3xl md:text-[40px]/12 font-medium text-black-100 max-w-lg text-center leading-tight">
         Don't just take our words
@@ -152,7 +152,7 @@ const Testimonial = () => {
 
         `}</style>
 
-      <div className="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative">
+      <div className="marquee-row w-full mx-auto max-w-5xl overflow-hidden relative ">
         <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-linear-to-r from-white to-transparent"></div>
 
         <div className="marquee-inner flex transform-gpu min-w-[200%] pt-10 pb-5">
