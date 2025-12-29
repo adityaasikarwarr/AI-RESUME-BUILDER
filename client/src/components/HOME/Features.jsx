@@ -5,8 +5,8 @@ const Features = () => {
     <div id="features">
       <section
         className="
-  py-20 px-4
-  bg-gradient-to-b from-white via-green-100 to-white
+  py-5 px-4
+  bg-linear-to-b from-white via-green-100 to-white
   flex flex-col justify-center items-center gap-6
 "
       >
