@@ -7,6 +7,7 @@ import {
   TrashIcon,
   PencilIcon,
   XIcon,
+  UploadCloud,
 } from "lucide-react";
 import { dummyResumeData } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
@@ -39,6 +40,12 @@ const Dashboard = () => {
     navigate(`/app/builder/resume123`);
   };
 
+  const uploadResume = async (event) => {
+    event.preventDefault();
+    setShowUpLoadResume(false);
+    navigate(`/app/builder/resume123`);
+  };
+
   useEffect(() => {
     loadAllResumes();
   }, []);
@@ -58,7 +65,10 @@ const Dashboard = () => {
               Create Resume
             </p>
           </button>
-          <button className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-purple-500 hover:shadow-lg transition-all duration-300 cursor-pointer">
+          <button
+            onClick={() => setShowUpLoadResume(true)}
+            className="w-full bg-white sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 text-slate-600 border border-dashed border-slate-300 group hover:border-purple-500 hover:shadow-lg transition-all duration-300 cursor-pointer"
+          >
             <UploadCloudIcon className="size-11 transition-all duration-300 p-2.5 bg-linear-to-br from-purple-300 to-purple-500 text-white rounded-ful   @apply l" />
             <p className="text-sm group-hover;text-indigo-600 transition-all duration-300">
               Upload Existing Resume
@@ -117,7 +127,7 @@ const Dashboard = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 type="text"
-                placeholder="enter resume title"
+                placeholder="Enter Resume Title"
                 className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600"
                 required
               />
@@ -149,7 +159,7 @@ const Dashboard = () => {
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
                 type="text"
-                placeholder="enter resume title"
+                placeholder="Enter Resume Title"
                 className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600"
                 required
               />
@@ -170,6 +180,13 @@ const Dashboard = () => {
                     )}
                   </div>
                 </label>
+                <input
+                  type="file"
+                  id="resume-input"
+                  accept=".pdf"
+                  hidden
+                  onChange={(e) => e.setResume.files[0]}
+                />
               </div>
               <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
                 Upload resume
@@ -177,7 +194,7 @@ const Dashboard = () => {
               <XIcon
                 className="absolute top-4 right-4 text-slate-400 hover;text-slate-600 cursor-pointer transition-colors"
                 onClick={() => {
-                  showCreateResume(false);
+                  setShowUpLoadResume(false);
                   setTitle("");
                 }}
               />
