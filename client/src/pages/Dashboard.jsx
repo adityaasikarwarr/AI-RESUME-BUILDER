@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { PlusIcon, UploadCloudIcon, FilePenIcon } from "lucide-react";
+import {
+  PlusIcon,
+  UploadCloudIcon,
+  FilePenIcon,
+  TrashIcon,
+  PencilIcon,
+} from "lucide-react";
 import { dummyResumeData } from "../assets/assets";
 
 const Dashboard = () => {
@@ -65,6 +71,16 @@ const Dashboard = () => {
                 >
                   {resume.title}
                 </p>
+                <p
+                  className="absolute bottom-1 text-[11px] text-slate-400 group-hover:text-slate-500 transition-all duration-300 px-2 text-center"
+                  style={{ color: baseColor + "90" }}
+                >
+                  updated on {new Date(resume.updatedAt).toLocaleDateString()}
+                </p>
+                <div className="absolute top-1 right-1 group-hover:flex items-center hidden">
+                  <TrashIcon className="size-7 p-1.5 hover:bg-white/50 rounded text-slate-700 transition-colors" />
+                  <PencilIcon className="size-7 p-1.5 hover:bg-white/50 rounded text-slate-700 transition-colors" />
+                </div>
               </button>
             );
           })}
