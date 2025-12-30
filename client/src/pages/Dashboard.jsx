@@ -153,13 +153,31 @@ const Dashboard = () => {
                 className="w-full px-4 py-2 mb-4 focus:border-green-600 ring-green-600"
                 required
               />
+
+              <div>
+                <label
+                  htmlFor="resume-input"
+                  className="block text-sm text-slate-700"
+                >
+                  Select Resume File
+                  <div className="flex flex-col items-center justify-center gap-2 border group text-slate-400 border-slate-400 border-dashed rounded-md p-4 py-10 my-4 hover:border-green-500 hover:text-green-700 cursor-pointer transition-colors">
+                    {resume ? (
+                      <p className="text-green-700">{resume.name}</p>
+                    ) : (
+                      <>
+                        <UploadCloud className="size-14 stroke-1" />
+                      </>
+                    )}
+                  </div>
+                </label>
+              </div>
               <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
                 Upload resume
               </button>
               <XIcon
                 className="absolute top-4 right-4 text-slate-400 hover;text-slate-600 cursor-pointer transition-colors"
                 onClick={() => {
-                  setShowCreateResume(false);
+                  showCreateResume(false);
                   setTitle("");
                 }}
               />
