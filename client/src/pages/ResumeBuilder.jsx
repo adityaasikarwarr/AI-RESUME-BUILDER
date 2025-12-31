@@ -116,6 +116,7 @@ function ResumeBuilder() {
                   </button>
                 </div>
               </div>
+
               {/* form content */}
               <div className="space-y-6">
                 {activeSection.id === "personal" && (
