@@ -12,6 +12,7 @@ import {
   Sparkles,
   User,
 } from "lucide-react";
+import PersonalInfo from "../components/PersonalInfo";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
@@ -82,8 +83,8 @@ function ResumeBuilder() {
                 }}
               />
 
-              {/* section navigation */}           
-              
+              {/* section navigation */}
+
               <div className="flex justify-center items-center mb-6 border-b border-gray-300 py-1">
                 <div> </div>
                 <div className="flex items-center">
@@ -107,7 +108,7 @@ function ResumeBuilder() {
                       )
                     }
                     className={`flex items-center gap-1 p-3 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-50 transition-all ${
-                      activeSectionIndex === sections.length - 1 && 'opacity-50'
+                      activeSectionIndex === sections.length - 1 && "opacity-50"
                     }`}
                     disabled={activeSectionIndex === sections.length - 1}
                   >
@@ -116,11 +117,19 @@ function ResumeBuilder() {
                 </div>
               </div>
               {/* form content */}
-              <div className = "space-y-6">
+              <div className="space-y-6">
                 {activeSection.id === "personal" && (
-                  <div> 
-                    
-                  </div>
+                  <PersonalInfo
+                    data={resumeData.personal_info}
+                    onChange={(data) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        personal_info: data,
+                      }))
+                    }
+                    removeBackground={removeBackground}
+                    setRemoveBackground={setRemoveBackground}
+                  />
                 )}
               </div>
             </div>
