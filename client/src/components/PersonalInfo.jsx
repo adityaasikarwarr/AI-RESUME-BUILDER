@@ -1,5 +1,14 @@
-import { Files, User } from "lucide-react";
 import React from "react";
+import {
+  BriefcaseBusiness,
+  Files,
+  Globe,
+  Linkedin,
+  Mail,
+  MapPin,
+  Phone,
+  User,
+} from "lucide-react";
 
 const PersonalInfo = ({
   data,
@@ -8,8 +17,55 @@ const PersonalInfo = ({
   setRemoveBackground,
 }) => {
   const handleChange = (field, value) => {
-    onchange({ ...data, [field]: value });
+    onChange({ ...data, [field]: value });
   };
+
+  const fields = [
+    {
+      key: "full-name",
+      label: "Full Name",
+      icon: User,
+      type: "text",
+      required: true,
+    },
+    {
+      key: "email",
+      label: "Email Address ",
+      icon: Mail,
+      type: "email",
+      required: true,
+    },
+    {
+      key: "phone",
+      label: "phone number",
+      icon: Phone,
+      type: "tel",
+    },
+    {
+      key: "location",
+      label: "Location",
+      icon: MapPin,
+      type: "text",
+    },
+    {
+      key: "professional",
+      label: "Professional",
+      icon: BriefcaseBusiness,
+      type: "text",
+    },
+    {
+      key: "Linkedin",
+      label: "Linkedin Profile",
+      icon: Linkedin,
+      type: "url",
+    },
+    {
+      key: "website",
+      label: "Personal Website",
+      icon: Globe,
+      type: "url",
+    },
+  ];
 
   return (
     <div>
@@ -21,7 +77,7 @@ const PersonalInfo = ({
       </p>
 
       <div className="flex items-center gap-2 ">
-        <label htmlFor="">
+        <label htmlFor="profileImage">
           {data.image ? (
             <img
               src={
@@ -41,6 +97,7 @@ const PersonalInfo = ({
 
           <input
             type="file"
+            id="profileImage"
             accept="image/jpeg , image/png"
             className="hidden"
             onChange={(e) => handleChange("image", e.target.files[0])}
@@ -48,7 +105,7 @@ const PersonalInfo = ({
         </label>
 
         {typeof data.image === "object" && (
-          <div className="flex flex-cols gap-1 pl-4 text-sm">
+          <div className="flex flex-col gap-1 pl-4 text-sm">
             <p>Remove Background</p>
             <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">
               <input
@@ -64,6 +121,19 @@ const PersonalInfo = ({
           </div>
         )}
       </div>
+
+      {fields.map((field) => {
+        const Icon = field.icon;
+        return (
+          <div key={field.key} className="space-y-1 mt-5">
+            <label className="flex items-center gap-2 text-sm font-medium text-gray-600">
+              <Icon className="size-4" />
+              {field.label}
+              {field.required && <span className="text-red-500"></span>}
+            </label>
+          </div>
+        );
+      })}
     </div>
   );
 };
