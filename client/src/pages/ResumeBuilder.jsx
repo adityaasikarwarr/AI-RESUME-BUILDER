@@ -110,7 +110,7 @@ function ResumeBuilder() {
                     }`}
                     disabled={activeSectionIndex === sections.length - 1}
                   >
-                    Next <ChevronRight className="size-4" /> Previous
+                    Next <ChevronRight className="size-4" /> 
                   </button>
                 </div>
               </div>
