@@ -13,13 +13,21 @@ import {
   User,
 } from "lucide-react";
 import PersonalInfo from "../components/PersonalInfo";
+import ResumePreview from "../components/ResumePreview";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
   const [resumeData, setResumeData] = useState({
     _id: "",
     title: "",
-    personal_info: {},
+    personal_info: {
+      image: null,
+      fullName: "",
+      email: "",
+      phone: "",
+      location: "",
+    },
+
     professional_summary: "",
     experience: [],
     project: [],
@@ -43,7 +51,7 @@ function ResumeBuilder() {
 
   const sections = [
     { id: "personal", name: " Personal Info ", Icon: User },
-    { id: "Summary", name: " Summary ", Icon: FileText },
+    { id: "summary", name: " Summary ", Icon: FileText },
     { id: "experience", name: " Experience ", Icon: Briefcase },
     { id: "education", name: " Education ", Icon: GraduationCap },
     { id: "projects", name: " Projects ", Icon: FolderIcon },
@@ -54,11 +62,11 @@ function ResumeBuilder() {
 
   useEffect(() => {
     loadExistingResume();
-  });
+  }, [resumeId]);
 
   return (
     <div>
-      <div className="max-w-7xl mx-auto px-4 py-6:">
+      <div className="max-w-7xl mx-auto px-4 py-6">
         <Link
           to={"/app"}
           className="inline-flex gap-2 items-center text-slate-500 hover:text-slate-700 transition-all"
@@ -71,11 +79,11 @@ function ResumeBuilder() {
         <div className="grid lg:grid-cols-12 gap-8">
           {/* left panel - form */}
           <div className="relative lg:col-span-5 rounded-lg overflow-hidden">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 pt-1">
+            <div className="relative bg-white rounded-lg shadow-sm border border-gray-200 p-6 pt-1">
               {/* progress bar using activeSectionIndex */}
               <hr className="absolute top-0 left-0 right-0 border-2 border-gray-200" />
               <hr
-                className="absolute top-0 left-0 h-1 bg-linear-to-r from-green-500 to-green-600 border-none transition-all duration-2000 "
+                className="absolute top-0 left-0 h-1 bg-linear-to-r from-green-500 to-green-600 border-none transition-all duration-300 "
                 style={{
                   width: `${
                     (activeSectionIndex * 100) / (sections.length - 1)
@@ -136,7 +144,13 @@ function ResumeBuilder() {
             </div>
           </div>
           {/* right pane;l - preview */}
-          <div></div>
+          <div className="lg:col-span-7 max-lg:mt-6">{/* buttons */}</div>
+
+          <ResumePreview
+            data={resumeData}
+            template={resumeData.template}
+            accentColor={resumeData.accent_color}
+          />
         </div>
       </div>
     </div>

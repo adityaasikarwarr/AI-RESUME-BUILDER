@@ -1,7 +1,6 @@
 import React from "react";
 import {
   BriefcaseBusiness,
-  Files,
   Globe,
   Linkedin,
   Mail,
@@ -22,7 +21,7 @@ const PersonalInfo = ({
 
   const fields = [
     {
-      key: "full-name",
+      key: "fullName",
       label: "Full Name",
       icon: User,
       type: "text",
@@ -54,7 +53,7 @@ const PersonalInfo = ({
       type: "text",
     },
     {
-      key: "Linkedin",
+      key: "linkedin",
       label: "Linkedin Profile",
       icon: Linkedin,
       type: "url",
@@ -98,13 +97,13 @@ const PersonalInfo = ({
           <input
             type="file"
             id="profileImage"
-            accept="image/jpeg , image/png"
+            accept="image/jpeg,image/png"
             className="hidden"
             onChange={(e) => handleChange("image", e.target.files[0])}
           />
         </label>
 
-        {typeof data.image === "object" && (
+        {data.image && typeof data.image === "object" && (
           <div className="flex flex-col gap-1 pl-4 text-sm">
             <p>Remove Background</p>
             <label className="relative inline-flex items-center cursor-pointer text-gray-900 gap-3">
@@ -115,7 +114,9 @@ const PersonalInfo = ({
                 checked={removeBackground}
               />
               <div className="w-9 h-5 bg-slate-300 rounded-full peer peer-checked:bg-green-600 transition-colors duration-200">
-                <span className="dot absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform duration-200 ease-in-out peer-checked:translate-x-4"></span>
+                <span className="dot absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform duration-200 ease-in-out peer-checked:translate-x-4">
+                  *
+                </span>
               </div>
             </label>
           </div>
@@ -134,9 +135,9 @@ const PersonalInfo = ({
             <input
               type={field.type}
               value={data[field.key] || ""}
-              onChange={(e) => handleChange(field.key, e.target)}
+              onChange={(e) => handleChange(field.key, e.target.value)}
               className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring focus::ring-blue-500 focus:border-blue-500 outline-none transition-colors text-sm"
-              placeholder={`Enter your ${field.label.toLowerCase}`}
+              placeholder={`Enter your ${field.label.toLowerCase()}`}
               required={field.required}
             />
           </div>
