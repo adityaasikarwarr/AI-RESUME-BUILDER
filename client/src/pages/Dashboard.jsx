@@ -37,13 +37,13 @@ const Dashboard = () => {
   const createResume = async (event) => {
     event.preventDefault();
     setShowCreateResume(false);
-    navigate(`/app/builder/res123`);
+    navigate(`/app/builder/${dummyResumeData[0]._id}`);
   };
 
   const uploadResume = async (event) => {
     event.preventDefault();
     setShowUpLoadResume(false);
-    navigate(`/app/builder/res123`);
+    navigate(`/app/builder/${dummyResumeData[0]._id}`);
   };
 
   const editTitle = async (event) => {

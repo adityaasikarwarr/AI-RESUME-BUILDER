@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { dummyResumeData } from "../assets/assets";
+import { dummyResumeData } from "../assets/assets.js";
 import {
   ArrowLeftIcon,
   Briefcase,
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import PersonalInfo from "../components/PersonalInfo";
 import ResumePreview from "../components/ResumePreview";
+import TemplateSelector from "../components/TemplateSelector.jsx";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
@@ -100,8 +101,16 @@ function ResumeBuilder() {
 
               {/* section navigation */}
 
-              <div className="flex justify-center items-center mb-6 border-b border-gray-300 py-1">
-                <div> </div>
+              <div className="flex justify-between items-center mb-6 border-b border-gray-300 py-1">
+                <div className="flex justify-center items-center mb-6 border-b border-gray-300 py-1">
+                  <TemplateSelector
+                    selectedTemplate={resumeData.template}
+                    onChange={(template) =>
+                      setResumeData((prev) => ({ ...prev, template }))
+                    }
+                  />
+                </div>
+
                 <div className="flex items-center">
                   {activeSectionIndex !== 0 && (
                     <button
@@ -152,19 +161,13 @@ function ResumeBuilder() {
           </div>
           {/* right pane;l - preview */}
           <div className="lg:col-span-7 max-lg:mt-6">
-            {/* buttons */}
+            <div> {/* buttons */}</div>
             <ResumePreview
               data={resumeData}
               template={resumeData.template}
               accentColor={resumeData.accent_color}
             />
           </div>
-
-          {/* <ResumePreview
-            data={resumeData}
-            template={resumeData.template}
-            accentColor={resumeData.accent_color}
-          /> */}
         </div>
       </div>
     </div>
