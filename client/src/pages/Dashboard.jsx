@@ -37,13 +37,13 @@ const Dashboard = () => {
   const createResume = async (event) => {
     event.preventDefault();
     setShowCreateResume(false);
-    navigate(`/app/builder/resume123`);
+    navigate(`/app/builder/res123`);
   };
 
   const uploadResume = async (event) => {
     event.preventDefault();
     setShowUpLoadResume(false);
-    navigate(`/app/builder/resume123`);
+    navigate(`/app/builder/res123`);
   };
 
   const editTitle = async (event) => {
@@ -94,10 +94,10 @@ const Dashboard = () => {
             return (
               <button
                 key={index}
-                onClick={() => navigate(`/app/builder/${resume._id}}`)}
+                onClick={() => navigate(`/app/builder/${resume._id}`)}
                 className="relative w-full sm:max-w-36 h-48 flex flex-col items-center justify-center rounded-lg gap-2 border group hover:shadow-lg transition-all duration-300 cursor-pointer"
                 style={{
-                  background: `linear-gradient(135deg , ${baseColor}10 , ${baseColor}40)`,
+                  background: `linear-gradient(135deg , ${baseColor}10,${baseColor}40)`,
                   borderColor: baseColor + "40",
                 }}
               >
@@ -201,6 +201,7 @@ const Dashboard = () => {
                     ) : (
                       <>
                         <UploadCloud className="size-14 stroke-1" />
+                        <p>Upload Resume</p>
                       </>
                     )}
                   </div>
@@ -210,7 +211,7 @@ const Dashboard = () => {
                   id="resume-input"
                   accept=".pdf"
                   hidden
-                  onChange={(e) => e.setResume.files[0]}
+                  onChange={(e) => setResume(e.target.files[0])}
                 />
               </div>
               <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">

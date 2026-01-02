@@ -1,8 +1,8 @@
 import React from "react";
-import ModernTemplate from "./templates/ModernTemplate";
-import ClassicTemplate from "./templates/ClassicTemplate";
-import MinimalTemplate from "./templates/MinimalTemplate";
-import MinimalImageTemplate from "./templates/MinimalImageTemplate";
+import ModernTemplate from ".components/templates/ModernTemplate.jsx";
+import ClassicTemplate from "./templates/ClassicTemplate.jsx";
+import MinimalTemplate from "./templates/MinimalTemplate.jsx";
+import MinimalImageTemplate from "./templates/MinimalImageTemplate.jsx";
 
 const ResumePreview = ({ data, template, accentColor, classes = "" }) => {
   const renderTemplate = () => {
@@ -27,7 +27,7 @@ const ResumePreview = ({ data, template, accentColor, classes = "" }) => {
       >
         {renderTemplate()}
       </div>
-      <style jsx>
+      <style jsx="true">
         {`
           @page {
             size: letter;

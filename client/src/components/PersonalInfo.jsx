@@ -21,7 +21,7 @@ const PersonalInfo = ({
 
   const fields = [
     {
-      key: "fullName",
+      key: "full_name",
       label: "Full Name",
       icon: User,
       type: "text",
@@ -36,7 +36,7 @@ const PersonalInfo = ({
     },
     {
       key: "phone",
-      label: "phone number",
+      label: "Phone number",
       icon: Phone,
       type: "tel",
     },
@@ -47,7 +47,7 @@ const PersonalInfo = ({
       type: "text",
     },
     {
-      key: "professional",
+      key: "profession",
       label: "Professional",
       icon: BriefcaseBusiness,
       type: "text",
