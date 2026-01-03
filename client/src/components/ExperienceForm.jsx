@@ -27,7 +27,7 @@ const ExperienceForm = ({ data, onChange }) => {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between gap--6">
+      <div className="flex items-center justify-between gap-6">
         <div>
           <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
             Professional Experience
@@ -66,7 +66,7 @@ const ExperienceForm = ({ data, onChange }) => {
                   <Trash2 className="size-4" />
                 </button>
               </div>
-              <div className="grid md;grid-cols-2 gap-3">
+              <div className="grid md:grid-cols-2 gap-3">
                 <input
                   type="text"
                   value={experience.company || ""}
@@ -74,7 +74,19 @@ const ExperienceForm = ({ data, onChange }) => {
                     updateExperience(index, "company", e.target.value)
                   }
                   placeholder="Company Name"
-                  className="px-3 py-2 text-sm rounded-lg"
+                  className="
+  w-full
+  px-3 py-2
+  text-sm
+  bg-white
+  border border-gray-200
+  rounded-lg
+  shadow-sm
+  focus:outline-none
+  focus:ring-2 focus:ring-blue-400/30
+  focus:border-blue-400
+  transition-all
+"
                 />
                 <input
                   type="text"
@@ -83,28 +95,52 @@ const ExperienceForm = ({ data, onChange }) => {
                     updateExperience(index, "position", e.target.value)
                   }
                   placeholder="Job Position"
-                  className="px-3 py-2 text-sm rounded-lg"
+                  className="
+                     w-full
+                                                  px-3 py-2
+                                                  text-sm
+                                                  bg-white
+                                                  border border-gray-200
+                                                  rounded-lg
+                                                  shadow-sm
+                                                  focus:outline-none
+                                                  focus:ring-2 focus:ring-blue-400/30
+                                                  focus:border-blue-400
+                                                  transition-all
+                                                "
                 />
                 <input
-                  type="month"
                   value={experience.start_date || ""}
                   onChange={(e) =>
                     updateExperience(index, "start_date", e.target.value)
                   }
-                  className="px-3 py-2 text-sm rounded-lg"
+                  type="date"
+                  className="
+                            w-full
+                            px-3 py-2
+                            text-sm
+                            bg-white
+                            border border-gray-200
+                            rounded-lg
+                            shadow-sm
+                            focus:outline-none
+                            focus:ring-2 focus:ring-blue-400/30
+                            transition-all
+                            focus:border-blue-400
+                          "
                 />
                 <input
-                  type="month"
                   disabled={experience.is_current}
                   value={experience.end_date || ""}
                   onChange={(e) =>
                     updateExperience(index, "end_date", e.target.value)
                   }
-                  className="px-3 py-2 text-sm rounded-lg disabled:bg-gray-100"
+                  className=" w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-400transition-all disabled:bg-gray-100"
+                  type="date"
                 />
               </div>
 
-              <label>
+              <label className="flex items-center gap-2 text-sm text-gray-700">
                 <input
                   type="checkbox"
                   checked={experience.is_current || false}
@@ -115,7 +151,7 @@ const ExperienceForm = ({ data, onChange }) => {
                       e.target.checked ? true : false
                     )
                   }
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 gap-"
                 />
                 <span className="text-sm text-gray-700">
                   Currently working here
@@ -138,7 +174,7 @@ const ExperienceForm = ({ data, onChange }) => {
                     updateExperience(index, "description", e.target.value)
                   }
                   rows={4}
-                  className="w-full text-sm px-3 py-2 rounded-lg resize-none"
+                  className="w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg shadow-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-400 transition-all"
                   placeholder="Describe your key responsibilities and achievements"
                 />
               </div>
@@ -146,7 +182,6 @@ const ExperienceForm = ({ data, onChange }) => {
           ))}
         </div>
       )}
-      ;
     </div>
   );
 };
