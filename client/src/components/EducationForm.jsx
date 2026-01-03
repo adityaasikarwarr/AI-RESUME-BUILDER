@@ -1,7 +1,7 @@
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Plus, Trash2 } from "lucide-react";
 import React from "react";
 
-const EducationForm = ({ data, onChange }) => {
+const EducationForm = ({ data = [], onChange }) => {
   const addEducation = () => {
     const newEducation = {
       institution: "",
@@ -33,6 +33,7 @@ const EducationForm = ({ data, onChange }) => {
           <p className="text-sm text-gray-500">Add your educational details</p>
         </div>
         <button
+          type="button"
           onClick={addEducation}
           className="flex items-center gap-2 px-3 py-1 text-sm bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors "
         >

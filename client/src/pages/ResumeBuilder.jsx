@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { data, Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { dummyResumeData } from "../assets/assets.js";
 import {
   ArrowLeftIcon,
@@ -18,6 +18,7 @@ import TemplateSelector from "../components/TemplateSelector.jsx";
 import ColorPicker from "../components/ColorPicker.jsx";
 import ProfessionalSummary from "../components/ProfessionalSummary.jsx";
 import ExperienceForm from "../components/ExperienceForm.jsx";
+import EducationForm from "../components/EducationForm.jsx";
 
 function ResumeBuilder() {
   const { resumeId } = useParams();
@@ -185,6 +186,18 @@ function ResumeBuilder() {
                 {activeSection.id === "experience" && (
                   <ExperienceForm
                     data={resumeData.experience}
+                    onChange={(data) =>
+                      setResumeData((prev) => ({
+                        ...prev,
+                        experience: data,
+                      }))
+                    }
+                  />
+                )}
+
+                {activeSection.id === "education" && (
+                  <EducationForm
+                    data={resumeData.education}
                     onChange={(data) =>
                       setResumeData((prev) => ({
                         ...prev,
