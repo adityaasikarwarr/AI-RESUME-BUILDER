@@ -74,19 +74,7 @@ const ExperienceForm = ({ data, onChange }) => {
                     updateExperience(index, "company", e.target.value)
                   }
                   placeholder="Company Name"
-                  className="
-  w-full
-  px-3 py-2
-  text-sm
-  bg-white
-  border border-gray-200
-  rounded-lg
-  shadow-sm
-  focus:outline-none
-  focus:ring-2 focus:ring-blue-400/30
-  focus:border-blue-400
-  transition-all
-"
+                  className="w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-400 transition-all"
                 />
                 <input
                   type="text"
@@ -95,19 +83,7 @@ const ExperienceForm = ({ data, onChange }) => {
                     updateExperience(index, "position", e.target.value)
                   }
                   placeholder="Job Position"
-                  className="
-                     w-full
-                                                  px-3 py-2
-                                                  text-sm
-                                                  bg-white
-                                                  border border-gray-200
-                                                  rounded-lg
-                                                  shadow-sm
-                                                  focus:outline-none
-                                                  focus:ring-2 focus:ring-blue-400/30
-                                                  focus:border-blue-400
-                                                  transition-all
-                                                "
+                  className="w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400/30  focus:border-blue-400 transition-all"
                 />
                 <input
                   value={experience.start_date || ""}
@@ -115,19 +91,7 @@ const ExperienceForm = ({ data, onChange }) => {
                     updateExperience(index, "start_date", e.target.value)
                   }
                   type="date"
-                  className="
-                            w-full
-                            px-3 py-2
-                            text-sm
-                            bg-white
-                            border border-gray-200
-                            rounded-lg
-                            shadow-sm
-                            focus:outline-none
-                            focus:ring-2 focus:ring-blue-400/30
-                            transition-all
-                            focus:border-blue-400
-                          "
+                  className="w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400/30 transition-all focus:border-blue-400"
                 />
                 <input
                   disabled={experience.is_current}
