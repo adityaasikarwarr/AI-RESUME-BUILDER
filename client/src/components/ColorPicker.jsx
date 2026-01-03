@@ -13,6 +13,26 @@ const ColorPicker = ({ selectedColor, onChange }) => {
     { name: "Pink", hex: "#FFC0CB" },
     { name: "Gray", hex: "#808080" },
     { name: "Black", hex: "#000000" },
+    { name: "Navy", hex: "#0F172A" },
+    { name: "Charcoal", hex: "#1F2937" },
+    { name: "Slate", hex: "#334155" },
+    { name: "Steel Blue", hex: "#1E3A8A" },
+    { name: "Forest Green", hex: "#14532D" },
+    { name: "Burgundy", hex: "#7F1D1D" },
+    { name: "Coffee", hex: "#3F2A1D" },
+    { name: "Graphite", hex: "#111827" },
+    { name: "Midnight", hex: "#020617" },
+    { name: "Ash Gray", hex: "#475569" },
+    { name: "Warm Gray", hex: "#78716C" },
+    { name: "Soft Black", hex: "#18181B" },
+    { name: "Ivory Accent", hex: "#A3A3A3" },
+    { name: "Forest Green", hex: "#14532D" },
+    { name: "Royal Blue", hex: "#2563EB" },
+    { name: "Cyan", hex: "#06B6D4" },
+    { name: "Emerald", hex: "#10B981" },
+    { name: "Violet", hex: "#7C3AED" },
+    { name: "Amber", hex: "#F59E0B" },
+    { name: "Midnight", hex: "#020617" },
   ];
 
   const [isOpen, setIsOpen] = React.useState(false);
@@ -32,6 +52,7 @@ const ColorPicker = ({ selectedColor, onChange }) => {
               className="relative cursor-pointer group flex flex-col"
               onClick={() => {
                 onChange(color.hex);
+                setIsOpen(false);
               }}
             >
               <div
