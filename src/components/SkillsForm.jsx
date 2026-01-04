@@ -15,7 +15,7 @@ const SkillsForm = ({ data = [], onChange }) => {
     onChange(data.filter((_, index) => index !== indexToRemove));
   };
 
-  const handelKeyPress = (e) => {
+  const handleKeyPress = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
       addSkill();
@@ -36,10 +36,14 @@ const SkillsForm = ({ data = [], onChange }) => {
         <input
           type="text"
           placeholder="Enter a Skill"
-          className="flex-1 px-3 py-2 text-sm"
+          className="flex-1 px-3 py-2 text-sm
+           border border-gray-200 rounded-xl
+           hover:border-gray-400
+           focus:outline-none focus:ring-2 focus:ring-blue-400/20 focus:border-blue-500
+           transition-all duration-200"
           onChange={(e) => setNewSkill(e.target.value)}
           value={newSkill}
-          onKeyDown={handelKeyPress}
+          onKeyDown={handleKeyPress}
         />
         <button
           type="button"
@@ -47,7 +51,7 @@ const SkillsForm = ({ data = [], onChange }) => {
           disabled={!newSkill.trim}
           className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          <Plus size-4 className="" /> Add
+          <Plus size-4 /> Add
         </button>
       </div>
 
