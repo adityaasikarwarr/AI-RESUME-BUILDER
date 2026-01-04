@@ -79,7 +79,7 @@ const ProjectForm = ({ data, onChange }) => {
                   updateProject(index, "description", e.target.value)
                 }
                 placeholder="Project Description"
-                className="w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-400 transition-all"
+                className="w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400/30 focus:border-blue-400 transition-all md:col-span-2"
               />
             </div>
           </div>
