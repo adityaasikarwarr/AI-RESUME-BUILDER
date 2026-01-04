@@ -1,8 +1,8 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
 const connectDB = async () => {
   try {
-    mongoose.connect.on("connected", () => {
+    mongoose.connection.on("connected", () => {
       console.log("MongoDB connected successfully");
     });
 
