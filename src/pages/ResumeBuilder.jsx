@@ -208,7 +208,7 @@ function ResumeBuilder() {
                   />
                 )}
 
-                {activeSection.id === "project" && (
+                {activeSection.id === "projects" && (
                   <ProjectForm
                     data={resumeData.project}
                     onChange={(data) =>
