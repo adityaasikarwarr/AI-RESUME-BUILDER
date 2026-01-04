@@ -36,11 +36,7 @@ const SkillsForm = ({ data = [], onChange }) => {
         <input
           type="text"
           placeholder="Enter a Skill"
-          className="flex-1 px-3 py-2 text-sm
-           border border-gray-200 rounded-xl
-           hover:border-gray-400
-           focus:outline-none focus:ring-2 focus:ring-blue-400/20 focus:border-blue-500
-           transition-all duration-200"
+          className="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-xl hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 focus:border-blue-500 transition-all duration-200"
           onChange={(e) => setNewSkill(e.target.value)}
           value={newSkill}
           onKeyDown={handleKeyPress}
@@ -49,7 +45,7 @@ const SkillsForm = ({ data = [], onChange }) => {
           type="button"
           onClick={addSkill}
           disabled={!newSkill.trim}
-          className="flex items-center gap-2 px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center gap-2 px-4 py-2 text-sm bg-linear-to-br from-green-100 to-green-200 ring-green-300 text-green-600 ring hover:ring-green-400 transition-all rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus size-4 /> Add
         </button>
