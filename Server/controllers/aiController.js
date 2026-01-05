@@ -1,8 +1,8 @@
+import ai from "../configs/ai.js";
+import Resume from "../models/Resume.js";
+
 //controller for enhancing a resume's professional summary
 //POST: /api/ai/enhance-pro-sum
-
-import ai from "../configs/ai.js";
-
 export const enhanceProfessionalSummary = async (req, res) => {
   try {
     const { userContent } = req.body;
@@ -35,7 +35,6 @@ export const enhanceProfessionalSummary = async (req, res) => {
 
 //controller for enhancing a resume's job description
 //POST: /api/ai/enhance-job-desc
-
 export const enhanceJobDescription = async (req, res) => {
   try {
     const { userContent } = req.body;
@@ -68,3 +67,41 @@ export const enhanceJobDescription = async (req, res) => {
 
 //controller for uploading a resume to the database
 //POST: /api/ai/upload-resume
+export const uploadResume = async (req, res) => {
+  try {
+    const { resumeText, title } = req.body;
+    const userId = req.userId;
+
+    if (!resumeText) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    const systemPrompt =
+      "You are an expert AI Agent to extract data from resume.";
+
+    const userPrompt = `extract data from this resume: ${resumeText}`;
+
+    const response = await ai.chat.completions.create({
+      model: process.env.OPENAI_MODEL,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt,
+        },
+        {
+          role: "user",
+          content: userPrompt,
+        },
+      ],
+      response_format: { type: "json_object" },
+    });
+
+    const extractData = response.choices[0].message.content;
+    const parseData = JSON.parse(extractData);
+    const newResume = await Resume.create({ userId, title, ...parseData });
+    
+    res.json({ resumeId: newResume._id });
+  } catch (error) {
+    return res.status(400).json({ message: error.message });
+  }
+};
