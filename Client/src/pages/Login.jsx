@@ -5,7 +5,7 @@ import { login } from "../app/features/authSlice";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const query = new URLSearchParams(window.location.search);
   const urlState = query.get("state");
   const [state, setState] = React.useState(urlState || "login");
@@ -22,8 +22,9 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const { data } = await api.post(`/api/users/${state}`, formData);
-      dispatch(login(data));
+      const { data } = await api.post(`/api/user/${state}`, formData);
+      dispatch(login({ token: data.token, user: data.user }));
+
       localStorage.setItem("token", data.token);
       toast.success(data.message);
     } catch (error) {

@@ -12,7 +12,7 @@ import { login, setLoading } from "./app/features/authSlice";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const getUserData = async () => {
     const token = localStorage.getItem("token");
 

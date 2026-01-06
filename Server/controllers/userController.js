@@ -12,38 +12,40 @@ const generateToken = (userID) => {
 
 // controller for user registration
 //POST: /api/users/register
+
+
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
 
-    // check if required fields are present
-    if (!name || !email || !password) {
-      return res.status(400).json({ message: "missing required filed" });
-    }
-
-    // check if user already exists
-    const user = await User.findOne({ email });
-    if (user) {
+    const exists = await User.findOne({ email });
+    if (exists) {
       return res.status(400).json({ message: "User already exists" });
     }
 
-    // create new user
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User.create({
+
+    const user = await User.create({
       name,
       email,
       password: hashedPassword,
     });
 
-    // return success response
-    const token = generateToken(newUser._id);
-    newUser.password = undefined;
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
+      expiresIn: "7d",
+    });
 
-    return res
-      .status(201)
-      .json({ message: "User registered successfully", user: newUser, token });
+    return res.status(201).json({
+      message: "User registered successfully",
+      token,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    });
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 };
 
@@ -109,7 +111,7 @@ export const getUserResumes = async (req, res) => {
     //return user resumes
     const resumes = await Resume.find({ userId });
 
-    return res.status(200).json({ resumes});
+    return res.status(200).json({ resumes });
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
