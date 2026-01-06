@@ -6,8 +6,20 @@ import Dashboard from "./pages/Dashboard";
 import ResumeBuilder from "./pages/ResumeBuilder";
 import Preview from "./pages/Preview";
 import Login from "./pages/Login";
+import { useDispatch } from "react-redux";
 
 const App = () => {
+  const dispatch = useDispatch;
+  const getUserData = async () => {
+    const token = localStorage.getItem("token");
+
+    try{
+if(token) {
+  const {data} = await 
+}
+    }catch (error) {}
+
+  };
   return (
     <>
       <Routes>
@@ -19,8 +31,6 @@ const App = () => {
         </Route>
 
         <Route path="view/:resumeID" element={<Preview />} />
-        <Route path="login" element={<Login />} />
-        
       </Routes>
     </>
   );
