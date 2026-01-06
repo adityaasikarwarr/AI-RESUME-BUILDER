@@ -80,7 +80,7 @@ export const uploadResume = async (req, res) => {
       "You are an expert AI Agent to extract data from resume.";
 
     const userPrompt = `extract data from this resume: ${resumeText}
-    
+
     Provide data in the following JSON format with no additional text before or after:{
 
     professional_summary: {type: String, default: "",},
@@ -138,8 +138,14 @@ export const uploadResume = async (req, res) => {
       response_format: { type: "json_object" },
     });
 
-    const extractData = response.choices[0].message.content;
+    // const extractData = response.choices[0].message.content;
+    let extractData = response.choices[0].message.content;
+    extractData = extractData
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
     const parseData = JSON.parse(extractData);
+
     const newResume = await Resume.create({ userId, title, ...parseData });
 
     res.json({ resumeId: newResume._id });
@@ -147,3 +153,4 @@ export const uploadResume = async (req, res) => {
     return res.status(400).json({ message: error.message });
   }
 };
+
