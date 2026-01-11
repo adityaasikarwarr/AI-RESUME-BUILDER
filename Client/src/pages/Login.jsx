@@ -45,7 +45,7 @@ const Login = () => {
   min-h-screen
   bg-linear-to-b from-white via-green-100 to-white
   overflow-hidden
-"
+"b
     >
       <form
         onSubmit={handleSubmit}
