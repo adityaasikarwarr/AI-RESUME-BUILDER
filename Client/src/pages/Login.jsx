@@ -1,7 +1,7 @@
 import React from "react";
-import api from "../configs/api";
+import api from "../configs/api.js";
 import { useDispatch } from "react-redux";
-import { login } from "../app/features/authSlice";
+import { login } from "../app/features/authSlice.js";
 import toast from "react-hot-toast";
 
 const Login = () => {
@@ -22,8 +22,8 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const { data } = await api.post(`/api/user/${state}`, formData);
-      dispatch(login({ token: data.token, user: data.user }));
+      const { data } = await api.post(`/api/users/${state}`, formData);
+      dispatch(login(data));
 
       localStorage.setItem("token", data.token);
       toast.success(data.message);
