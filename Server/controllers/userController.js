@@ -34,6 +34,14 @@ export const registerUser = async (req, res) => {
       email,
       password: hashedPassword,
     });
+
+    //return success message
+    const token = generateToken(newUser._id);
+    newUser.password = undefined;
+
+    return res
+      .status(201)
+      .json({ message: "USer created successfully", token, user: newUser });
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
