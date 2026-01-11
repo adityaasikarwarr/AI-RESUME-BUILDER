@@ -5,10 +5,9 @@ import Layout from "./pages/Layout";
 import Dashboard from "./pages/Dashboard";
 import ResumeBuilder from "./pages/ResumeBuilder";
 import Preview from "./pages/Preview";
-import Login from "./pages/Login";
 import { useDispatch } from "react-redux";
 import api from "./configs/api";
-import { login, setLoading } from "./app/features/authSlice";
+import { login, setLoading } from "./app/features/authSlice.js";
 import { Toaster } from "react-hot-toast";
 
 const App = () => {
