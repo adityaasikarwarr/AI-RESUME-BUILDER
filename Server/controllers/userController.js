@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Resume from "../models/Resume.js";
 
+
 const generateToken = (userId) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, {
     expiresIn: "7d",
@@ -47,9 +48,9 @@ export const registerUser = async (req, res) => {
   }
 };
 
+
 // controller for user login
 //POST: /api/users/login
-
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -71,7 +72,7 @@ export const loginUser = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "User logged in successfully", user, token });
+      .json({ message: "User logged in successfully", user , token });
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
@@ -92,7 +93,6 @@ export const getUserById = async (req, res) => {
 
     //return success response
     user.password = undefined;
-
     return res.status(200).json({ user });
   } catch (error) {
     return res.status(400).json({ message: error.message });

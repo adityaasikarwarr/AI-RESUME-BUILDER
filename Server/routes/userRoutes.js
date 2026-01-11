@@ -7,11 +7,11 @@ import {
 } from "../controllers/userController.js";
 import authMiddleware from "../middlewares/authMiddleware.js";
 
-const router = express.Router();
+const userRouter = express.Router();
 
-router.post("/register", registerUser);
-router.post("/login", loginUser);
-router.get("/data", authMiddleware, getUserById);
-router.get("/resumes", authMiddleware, getUserResumes);
+userRouter.post("/register", registerUser);
+userRouter.post("/login", loginUser);
+userRouter.get("/data", authMiddleware, getUserById);
+userRouter.get("/resumes", authMiddleware, getUserResumes);
 
-export default router;
+export default userRouter;
