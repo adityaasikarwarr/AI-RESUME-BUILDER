@@ -5,7 +5,7 @@ import fs from "fs";
 //controller for creating a new resume
 //POST: /api/resumes/create
 
-export const createResumes = async (req, res) => {
+export const createResume = async (req, res) => {
   try {
     const userId = req.userId;
     const { title } = req.body;
@@ -25,7 +25,7 @@ export const createResumes = async (req, res) => {
 //controller for delete resume
 //POST: /api/resumes/delete
 
-export const deleteResumes = async (req, res) => {
+export const deleteResume = async (req, res) => {
   try {
     const userId = req.userId;
     const { resumeId } = req.params;
@@ -91,9 +91,30 @@ export const updateResume = async (req, res) => {
 
     let resumeDataCopy = JSON.parse(resumeData);
 
-    const resume = await Resume.findByIdAndUpdate({ userId, _id: resumeId }, resumeDataCopy, {
-      new: true,
-    });
+    if (image) {
+      const imageBufferData = fs.createReadStream(image.path);
+
+      const response = await imageKit.files.upload({
+        file: imageBufferData,
+        fileName: "resume.png",
+        folder: "user-resumes",
+        transformation: {
+          pre:
+            "w-300 , h-300 , fo-face , z-0.75" +
+            (removeBackground ? "e-bgremove" : ""),
+        },
+      });
+
+      resumeDataCopy.personal_info.image = response.url;
+    }
+
+    const resume = await Resume.findByIdAndUpdate(
+      { userId, _id: resumeId },
+      resumeDataCopy,
+      {
+        new: true,
+      }
+    );
 
     return res.status(200).json({ message: "Saved successfully", resume });
   } catch (error) {
