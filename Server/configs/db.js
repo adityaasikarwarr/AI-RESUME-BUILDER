@@ -6,11 +6,11 @@ const connectDB = async () => {
       console.log("MongoDB connected successfully");
     });
 
-    let mongodbURI = process.env.MONGO_URI;
+    let mongodbURI = process.env.MONGODB_URI;
     const projectName = "resume-builder";
 
     if (!mongodbURI) {
-      throw new Error("MONGO_URI is not defined in environment variables");
+      throw new Error("MONGODB_URI is not defined in environment variables");
     }
 
     if (mongodbURI.endsWith("/")) {
