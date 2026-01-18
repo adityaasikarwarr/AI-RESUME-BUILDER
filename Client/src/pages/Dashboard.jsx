@@ -9,7 +9,7 @@ import {
   XIcon,
   UploadCloud,
 } from "lucide-react";
-import { dummyResumeData } from "../assets/assets";
+
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../configs/api";
@@ -55,7 +55,7 @@ const Dashboard = () => {
       const { data } = await api.post(
         "/api/resumes/create",
         { title },
-        { headers: { Authorization: token } }
+        { headers: { Authorization: token } },
       );
       setAllResumes([...allResumes, data.resume]);
       setTitle("");
@@ -74,7 +74,7 @@ const Dashboard = () => {
       const { data } = await api.post(
         "/api/ai/upload-resume",
         { title, resumeText },
-        { headers: { Authorization: token } }
+        { headers: { Authorization: token } },
       );
       setTitle("");
       setResume(null);
@@ -82,8 +82,8 @@ const Dashboard = () => {
       navigate(`/app/builder/${data.resumeId}`);
     } catch (error) {
       toast.error(error?.response?.data?.message || error.message);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   };
 
   const editTitle = async (event) => {
