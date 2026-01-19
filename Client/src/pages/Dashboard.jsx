@@ -8,6 +8,7 @@ import {
   PencilIcon,
   XIcon,
   UploadCloud,
+  LoaderCircleIcon,
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
@@ -87,14 +88,40 @@ const Dashboard = () => {
   };
 
   const editTitle = async (event) => {
-    event.preventDefault();
+    try {
+      event.preventDefault();
+      const { data } = await api.put(
+        `/api/resumes/update`,
+        { resumeId: editResumeID, resumeData: { title } },
+        {
+          headers: { Authorization: token },
+        },
+      );
+      setAllResumes(
+        allResumes.map((resume) =>
+          resume._id === editResumeID ? { ...resume, title } : resume,
+        ),
+      );
+      setTitle(``);
+      setEditResumeID(``),
+      toast.success(data.message)
+    } catch (error) {
+   toast.error(error?.response?.data?.message || error.message);
+    }
   };
 
   const deleteResume = async (resumeId) => {
-    const confirm = window.confirm("Are you sure want to delete the Resume");
-
-    if (confirm) {
-      setAllResumes((prev) => prev.filter((resume) => resume._id !== resumeId));
+    try {
+      const confirm = window.confirm("Are you sure want to delete the Resume");
+      if (confirm) {
+        const { data } = await api.delete(`/api/resumes/delete/${resumeId}`, {
+          headers: { Authorization: token },
+        });
+        setAllResumes(allResumes.filter((resume) => resume._id !== resumeId));
+        toast.success(data.message);
+      }
+    } catch (error) {
+      toast.error(error?.response?.data?.message || error.message);
     }
   };
 
@@ -255,6 +282,10 @@ const Dashboard = () => {
                 />
               </div>
               <button className="w-full py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors">
+                {isLoading && (
+                  <LoaderCircleIcon className="animate-spin size-4 text-white" />
+                )}
+                {isLoading ? "uploading..." : "upload resume"}
                 Upload resume
               </button>
               <XIcon
