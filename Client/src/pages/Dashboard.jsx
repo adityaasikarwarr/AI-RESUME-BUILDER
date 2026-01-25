@@ -103,10 +103,9 @@ const Dashboard = () => {
         ),
       );
       setTitle(``);
-      setEditResumeID(``),
-      toast.success(data.message)
+      (setEditResumeID(``), toast.success(data.message));
     } catch (error) {
-   toast.error(error?.response?.data?.message || error.message);
+      toast.error(error?.response?.data?.message || error.message);
     }
   };
 
@@ -298,7 +297,7 @@ const Dashboard = () => {
             </div>
           </form>
         )}
-        ;
+
         {editResumeID && (
           <form
             onSubmit={editTitle}
