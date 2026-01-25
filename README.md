@@ -171,7 +171,7 @@ You are free to use, modify, and distribute it.
 ## 🙌 Author
 
 **Aditya Sikarwarr**  
-🔗 GitHub: https://github.com/adityasikarwarr
+🔗 GitHub: https://github.com/adityaasikarwarr
 
 ⭐ If you like this project, don’t forget to **star the repo**!
 
