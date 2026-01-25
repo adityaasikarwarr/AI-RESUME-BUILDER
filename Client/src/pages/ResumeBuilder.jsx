@@ -70,7 +70,7 @@ function ResumeBuilder() {
         document.title = data.resume.title;
       }
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message);
     }
   };
 
@@ -127,6 +127,33 @@ function ResumeBuilder() {
 
   const downloadResume = () => {
     window.print();
+  };
+
+  const saveResume = async () => {
+    try {
+      let updatedResumeData = structuredClone(resumeData);
+
+      // remove image from updated resume data
+
+      if (typeof resumeData.personal_info.image === "object") {
+        delete updatedResumeData.personal_info.image;
+      }
+
+      const formData = new FormData();
+      formData.append("resumeId", resumeId);
+      formData.append("resumeData", JSON.stringify(updatedResumeData));
+      removeBackground && formData.append("removeBackground", "yes");
+      typeof resumeData.personal_info.image === "object" &&
+        formData.append("image", resumeData.personal_info.image);
+
+      const { data } = await api.put("/api/resumes/update", formData, {
+        headers: { Authorization: token },
+      });
+      setResumeData(data.image);
+      toast.success(data.message);
+    } catch (error) {
+      console.error("Error saving resume :  ", error);
+    }
   };
 
   return (
