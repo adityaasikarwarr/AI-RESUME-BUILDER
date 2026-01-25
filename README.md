@@ -116,3 +116,64 @@ ai-resume-builder/
 ├── README.md
 └── package.json
 
+
+---
+
+## 🚀 How It Works
+
+1️⃣ Select a resume template  
+2️⃣ Enter personal & professional details  
+3️⃣ Use AI to enhance resume sections  
+4️⃣ Customize content as per job role  
+5️⃣ Generate an ATS-friendly resume  
+
+---
+
+## 🎯 Who Is This For?
+
+✔ Students & freshers  
+✔ Job seekers  
+✔ Professionals switching careers  
+✔ Anyone who wants a **strong, AI-optimized resume**
+
+---
+
+## 🔮 Future Enhancements
+
+- Job-description-based resume optimization  
+- AI cover letter generator  
+- Resume ATS score & analysis  
+- PDF export & sharing  
+- Multi-language support  
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome!  
+
+1. Fork the repository  
+2. Create a new branch  
+3. Commit your changes  
+4. Open a pull request  
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute it.
+
+---
+
+<div align="center">
+
+## 🙌 Author
+
+**Aditya Sikarwarr**  
+🔗 GitHub: https://github.com/adityaasikarwarr
+
+⭐ If you like this project, don’t forget to **star the repo**!
+
+</div>
+
