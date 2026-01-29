@@ -24,7 +24,6 @@ export const createResume = async (req, res) => {
 
 //controller for delete resume
 //POST: /api/resumes/delete
-
 export const deleteResume = async (req, res) => {
   try {
     const userId = req.userId;
@@ -93,7 +92,7 @@ export const updateResume = async (req, res) => {
     if (typeof resumeData === "string") {
       resumeDataCopy = await JSON.parse(resumeData);
     } else {
-      resumeDataCopy = structuredClone(resumeData)
+      resumeDataCopy = structuredClone(resumeData);
     }
 
     if (image) {

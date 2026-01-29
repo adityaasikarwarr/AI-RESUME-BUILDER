@@ -1,7 +1,17 @@
 import { Sparkles } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 const ProfessionalSummary = ({ data, onChange, setResumeData }) => {
+  const { token } = useSelector((state) => state.auth);
+  const [isGenerating, setIsGEnerating] = useState(false);
+  const generateSymmaary = async (params) => {
+    try {
+      setIsGEnerating(true);
+      const prompt = `enhance my su`
+    } catch (error) {}
+    y;
+  };
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between gap--6">
