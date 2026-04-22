@@ -8,9 +8,11 @@ const ProfessionalSummary = ({ data, onChange, setResumeData }) => {
   const generateSymmaary = async (params) => {
     try {
       setIsGEnerating(true);
-      const prompt = `enhance my su`
-    } catch (error) {}
-    y;
+      const prompt = `enhance my summary`
+    } catch (error) {
+      token.error('You got an error')
+    }
+    ;
   };
   return (
     <div className="space-y-4">
